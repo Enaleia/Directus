@@ -19,6 +19,7 @@ services:
       cache:
         condition: service_healthy
     environment:
+      PUBLIC_URL: ${PUBLIC_URL}
       SECRET: ${SECRET}
       DB_CLIENT: ${DB_CLIENT}
       DB_HOST: ${DB_HOST}
