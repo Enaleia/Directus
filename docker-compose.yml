@@ -1,15 +1,6 @@
 version: "3"
 services:
-  cache:
-    image: redis:6
-    healthcheck:
-      test: ["CMD-SHELL", "[ $$(redis-cli ping) = 'PONG' ]"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_interval: 5s
-      start_period: 30s
-  directus: #Self-hosted headless CMS
+  directus:
     image: directus/directus:11.3.5
     ports:
       - 8055:8055
