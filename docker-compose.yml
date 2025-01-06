@@ -6,9 +6,6 @@ services:
       - 8055:8055
     volumes:
       - ./extensions:/directus/extensions
-    depends_on:
-      cache:
-        condition: service_healthy
     environment:
       PUBLIC_URL: ${PUBLIC_URL}
       SECRET: ${SECRET}
