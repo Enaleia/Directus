@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - staging
 
 jobs:
   ploi-deploy:
@@ -15,8 +16,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Trigger Ploi deploy webhook
-      - name: Deploy
+      # Trigger Ploi deploy webhook for staging
+      - name: Deploy to Staging
+        if: github.ref == 'refs/heads/staging'
         uses: Glennmen/ploi-deploy-action@v1.2.0
         with:
           webhook_url: ${{ secrets.WEBHOOK_URL_STAGING }}
+
+      # Trigger Ploi deploy webhook for production
+      - name: Deploy to Production
+        if: github.ref == 'refs/heads/main'
+        uses: Glennmen/ploi-deploy-action@v1.2.0
+        with:
+          webhook_url: ${{ secrets.WEBHOOK_URL }}
