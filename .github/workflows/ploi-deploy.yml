@@ -19,4 +19,4 @@ jobs:
       - name: Deploy
         uses: Glennmen/ploi-deploy-action@v1.2.0
         with:
-          webhook_url: ${{ secrets.WEBHOOK_URL }}
+          webhook_url: ${{ secrets.WEBHOOK_URL_STAGING }}
